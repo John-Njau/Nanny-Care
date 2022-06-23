@@ -10,6 +10,7 @@ class Company(models.Model):
     phone_number = models.IntegerField(null=True, blank=True)
     email = models.EmailField(max_length=254)
 
+
     def __str__(self):
         return self.name
 
@@ -60,6 +61,8 @@ class Nanny(models.Model):
     location = models.CharField(max_length=50, blank=True)
     about = models.TextField(default="Some String")
     skills = models.TextField(default="Some String")
+    company=models.ForeignKey(Company, on_delete=models.CASCADE ,default=1)
+
 
     def save_profile(self):
         self.save()
